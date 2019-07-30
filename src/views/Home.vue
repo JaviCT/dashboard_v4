@@ -1,18 +1,15 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+  name: 'Home',
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+      this.$router.push('/users/login')
+    } else {
+      this.$router.push('/cameras')
+    }
+  },
+};
 </script>
